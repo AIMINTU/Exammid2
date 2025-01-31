@@ -8,8 +8,7 @@ const Header = () => {
 
         <li><NavLink to='/houses'>Houses</NavLink></li>
         <li><NavLink to='/Sliderhouse'>SliderHouse</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        
 
 
     </>
@@ -47,8 +46,9 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn bg-linear-to-r from-cyan-500 to-blue-500">Login</a>
+                <div className="navbar-end flex">
+                    <Link to='/Login'><a className="btn bg-linear-to-r from-cyan-500 to-blue-100">Login</a></Link>
+                    <Link to='/register'><a className="btn bg-linear-to-r from-cyan-500 to-blue-100">Register</a></Link>
                 </div>
             </div>
         </div>
