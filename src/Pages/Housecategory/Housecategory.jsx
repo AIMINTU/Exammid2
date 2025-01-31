@@ -2,6 +2,9 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
+import studi from '../../assets/2.png'
+import stud from '../../assets/3.png'
 
 const Housecategory = () => {
     var settings = {
@@ -10,21 +13,38 @@ const Housecategory = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1
-      };
+    };
     return (
-        <div className='w-3/4 m-auto'>
+        <div className='Max-w-7xl mx-auto'>
 
-            <h1 className='font-bold text-3xl text-center border border-b-blue-600 shadow text-neutral py-3 rounded-xl'>HouseCategory</h1>
+            <Link to='/houses'><h1 className='font-bold text-3xl text-center border border-b-blue-600 shadow text-neutral py-3 rounded-xl'>HouseCategory</h1></Link>
+            <div className='grid grid-cols-3 mt-20'>
+                <div className='col-span-2 border border-blue-500 p-10 '>
+
+                    <h1 className='font-bold text-2xl text-blue-300'>Types of Flates</h1>
+                    <hr className='border border-black' />
+                    <div>
+                        <img className='mt-3 h-[450px]' src={studi} alt="" />
+                        <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center'>Studio Apartment</p></Link>
+                    </div>
+                    <img className='mt-3 h-[550px]' src={stud} alt="" />
+                    <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center'>One Bedroom Apartment</p></Link>
+
+                </div>
+                <div className='col-span-1 border border-blue-500 p-10'>
+                    Hi
+                </div>
+            </div>
             <div className='mt-20'>
                 <Slider {...settings}>
-                    {Data.map(d => 
+                    {Data.map(d =>
                         <div className='bg-white h-[450px] text-black rounded-xl'>
                             <div>
                                 <div>
                                     <p>{d.id}</p>
                                 </div>
 
-                                <div className='h-56 rounded-t-xl bg-indigo-600 flex justify-center items-center'>
+                                <div className='h-56 rounded-xl bg-indigo-600 flex justify-center items-center'>
                                     <img src={d.image} alt="" className='h-44 w-44 rounded-full' />
                                 </div>
                                 <div className='flex flex-col justify-center items-center gap-4 p-4'>
