@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SlideImg from '../../assets/3.png'
 
 const SliderHouse = () => {
 
@@ -15,7 +16,28 @@ const SliderHouse = () => {
     return (
 
         <div className='max-w-7xl mx-auto'>
-            <div className='w-3/4 m-auto'>
+            <div className='grid grid-cols-2'>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+                <div>
+                    <img src={SlideImg} alt="" />
+                </div>
+            </div>
+            <div className=' mx-auto'>
+
                 <div className='mt-20'>
                     <Slider {...settings}>
                         {Data.map(d =>
@@ -25,18 +47,29 @@ const SliderHouse = () => {
                                         <p>{d.id}</p>
                                     </div>
 
-                                    <div className='h-56 rounded-t-xl bg-indigo-600 flex justify-center items-center'>
-                                        <img src={d.image} alt="" className='h-44 w-44 rounded-full' />
+                                    <div className='h-60  rounded-t-xl bg-indigo-600 flex justify-center items-center'>
+                                        <img src={d.image} alt="" className='h-60 w-60 ' />
                                     </div>
                                     <div className='flex flex-col justify-center items-center gap-4 p-4'>
                                         <p className='text-xl font-semibold'>{d.name}</p>
                                         <p>{d.text}</p>
-                                        <button className='border-indigo-600 text-white text text-lg px-4 py-1 rounded-xl'>read more</button>
+
+                                        <p>Retail Property for Lease/Sale – Prime Location in London, England.
+
+                                            This highly sought-after retail property is located in the heart of [City/Area], offering excellent visibility and foot traffic.
+                                            Retail Property for Lease/Sale – Prime Location in [City/Area]
+
+                                            This highly sought-after retail property is located in the heart of [City/Area], offering excellent visibility and foot traffic. With a spacious [X square feet] of retail space, this property is perfect for a variety of businesses, from boutique stores to cafés or service-based businesses.
+
+                                            Key Features
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
                         )}
                     </Slider>
+                    <button className='border-indigo-600 text-white text text-lg px-4 py-1 rounded-xl'>read more</button>
 
                 </div>
 
