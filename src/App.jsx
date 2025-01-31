@@ -7,6 +7,8 @@ import Home from './Pages/Home/Home'
 import Houses from './Pages/Houses/Houses'
 import SliderHouse from './Pages/SliderHouse/SliderHouse'
 import HouseDetails from './Pages/HouseDetails/HouseDetails'
+import Register from './Pages/Register/Register'
+import Login from './Pages/Login/Login'
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +31,14 @@ function App() {
         {
           path:'/housedetails',
           element:<HouseDetails></HouseDetails>
+        },
+        {
+          path:'/register',
+          element:<Register></Register>
+        },
+        {
+          path:'/login',
+          element:<Login></Login>
         }
       ]
     }
