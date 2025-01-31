@@ -21,18 +21,31 @@ const Housecategory = () => {
             <div className='grid grid-cols-3 mt-20'>
                 <div className='col-span-2 border border-blue-500 p-10 '>
 
-                    <h1 className='font-bold text-2xl text-blue-300'>Types of Flates</h1>
+                    <h1 className='font-bold text-2xl text-neutral'>Types of Flates :</h1>
                     <hr className='border border-black' />
-                    <div>
-                        <img className='mt-3 h-[450px]' src={studi} alt="" />
-                        <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center'>Studio Apartment</p></Link>
-                    </div>
-                    <img className='mt-3 h-[550px]' src={stud} alt="" />
-                    <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center'>One Bedroom Apartment</p></Link>
+                    <div className='grid grid-cols-2 '>
+                        <div>
+                            <img className='mt-3 h-[450px]' src={studi} alt="" />
+                            <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center border border-blue-400'>Studio Apartment</p></Link>
+                        </div>
+                        <div>
+                            <img className='mt-3 h-[450px]' src={stud} alt="" />
+                            <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center border border-blue-400'>One Bedroom Apartment</p></Link>
 
+                        </div>
+                        <div>
+                            <img className='mt-3 h-[450px]' src={studi} alt="" />
+                            <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center border border-blue-400'>Three Bedrooms Apartment</p></Link>
+                        </div>
+                        <div>
+                            <img className='mt-3 h-[450px]' src={stud} alt="" />
+                            <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center border border-blue-400'>Four Bedrooms Apartment</p></Link>
+
+                        </div>
+                    </div>
                 </div>
                 <div className='col-span-1 border border-blue-500 p-10'>
-                    Hi
+                    This part is for login in the housecategory page
                 </div>
             </div>
             <div className='mt-20'>
