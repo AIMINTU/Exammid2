@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import app from '../../../Firebase/Firebase.config';
 
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
+import { Link } from 'react-router-dom';
+
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 const Login = () => {
     const [user, setUser] = useState(null)
-
+    const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+    const [showpass,setShowpass]=useState(true)
 
     const provider = new GoogleAuthProvider()
     const auth = getAuth(app)
@@ -22,29 +28,59 @@ const Login = () => {
                 console.log(err.message)
             })
     }
-    const Logout=()=>{
+    const handleSign = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value
+        const password = form.password.value
+        setError(null)
+        setSuccess(null)
+        signInWithEmailAndPassword(auth, email, password)
+        console.log(email, password)
+            .then(result => {
+                setSuccess("User login successfully")
+                console.log(result.user)
+            })
+            .catch(err => {
+                if (err.message == 'Firebase: Error (auth/invalid-Credential).') {
+                    setError("Your email is wrong")
+
+
+                }
+                else {
+                    setError(err.message)
+                }
+
+                console.log(err.message)
+            })
+    }
+    const Logout = () => {
         signOut(auth)
-        .then(()=>{
-            setUser(null)
-            console.log("signout successfully")
-        })
-        .catch(err=>{
-            console.log(err.message)
-        })
+            .then(() => {
+                setUser(null)
+                console.log("signout successfully")
+            })
+            .catch(err => {
+                setError(err.message)
+                console.log(err.message)
+            })
+    }
+    const HideShow=()=>{
+        setShowpass(!showpass)
     }
 
-    const loginWithGithub=()=>{
-        const provider=new GithubAuthProvider();
-        const auth=getAuth()
-        signInWithPopup(auth,provider)
-        .then(result=>{
-            const githubuser=result.user;
-            setUser(githubuser)
-            console.log(githubuser)
-        })
-        .catch(err=>{
-            console.log(err.message)
-        })
+    const loginWithGithub = () => {
+        const provider = new GithubAuthProvider();
+        const auth = getAuth()
+        signInWithPopup(auth, provider)
+            .then(result => {
+                const githubuser = result.user;
+                setUser(githubuser)
+                console.log(githubuser)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
 
     }
     return (
@@ -70,34 +106,43 @@ const Login = () => {
 
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form className="card-body">
+                        <form className="card-body" onSubmit={handleSign}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <div className='flex items-center'>
+                                    <input type={showpass?"password":"text"} placeholder="password" name="password" className="input input-bordered w-full" required />
+                                    
+                                    {
+                                        showpass?<FaEyeSlash className='text-xl relative right-7' onClick={HideShow}></FaEyeSlash>:<FaEye onClick={HideShow} className='text-xl relative right-7' ></FaEye>
+                                    }
+                                </div>
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <Link to='/reset' className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                             </div>
+                            <span>Are you new here?<Link to='/register' className='text-bold text-blue-500 text-xl'>Click to register</Link></span>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
 
                             </div>
+                            <p className='text-green-600'>{success}</p>
+                            <p className='text-red-600'>{error}</p>
                         </form>
                         {
-                            user ?<button className="btn btn-primary mt-10" onClick={Logout}>LogOut</button>:<div><button className="btn btn-primary mt-10" onClick={loginWithGoogle}>Google Login</button>
-                            <button className="btn btn-primary mt-10" onClick={loginWithGithub}>Github Login</button>
-                            
+                            user ? <button className="btn btn-primary mt-10" onClick={Logout}>LogOut</button> : <div><button className="btn btn-primary mt-10" onClick={loginWithGoogle}>Google Login</button>
+                                <button className="btn btn-primary mt-10" onClick={loginWithGithub}>Github Login</button>
+
                             </div>
                         }
-                        
+
                     </div>
                 </div>
             </div>

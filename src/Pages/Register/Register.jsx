@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from '../../../Firebase/Firebase.config'
+import { Link } from 'react-router-dom';
 const Register = () => {
     const [success,setSuccess]=useState(null)
     const [error, setError] = useState(null)
@@ -20,6 +21,10 @@ const Register = () => {
             setError("password is too short,it's should be at least 6 characters.");
             return;
         }
+       else if(!/^(?=.*[A-Z])(?=.*\d).+$/.test(password)){
+        setError("give at least one upper case letter and one number")
+        return;
+       }
 
 
 
@@ -32,11 +37,11 @@ const Register = () => {
             })
             .catch(err => {
                 console.log(err.message)
-                if(err.message == "Firebase: Error (auth/email-already-in-use).") {
+                if(err.message == 'Firebase: Error (auth/email-already-in-use).') {
                     setError("This email is already used in the database")
                 }
-                else if(err.message == "Firebase: password should be at least 6 characters (auth/weak-password).") {
-                    setError("password is too short,password should be at least 6 characters")
+                else if(err.message == 'Firebase: password should be at least 6 characters (auth/weak-password).') {
+                    setError('password is too short,password should be at least 6 characters')
                 }
 
             })
@@ -94,6 +99,7 @@ const Register = () => {
                             user && <p style={{color:'green'}}>{success&& user.email}{success}</p>
                         }
                     </div>
+                    <span>account? if yes <Link to='/login' className='text-bold text-xl text-blue-500'>Please Login</Link></span><br/>
                     <button className="btn btn-accent mt-3 w-36">Register please</button>
                 </form>
             </div>

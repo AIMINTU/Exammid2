@@ -39,6 +39,10 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/reset',
+          element:
         }
       ]
     }
