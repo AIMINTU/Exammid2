@@ -11,6 +11,8 @@ import { FaFacebook ,FaTwitter,FaLinkedin,FaInstagram, FaSnapchat,FaTelegram,FaW
 import sphoto from '../../assets/Rent-a-house.png'
 
 const Housecategory = () => {
+
+    
     var settings = {
         dots: true,
         infinite: true,

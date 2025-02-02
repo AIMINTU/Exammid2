@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import app from '../../../Firebase/Firebase.config'
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 const Register = () => {
     const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
@@ -38,6 +39,7 @@ const Register = () => {
                 })
                 .then(()=>{
                     console.log("userupdated")
+                    toast('registration successflly')
                 })
                 .catch(err=>{
                     console.log(err.message)
@@ -132,6 +134,7 @@ const Register = () => {
                     <button className="btn btn-accent mt-3 w-36">Register please</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };
