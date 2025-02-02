@@ -1,6 +1,5 @@
 import React from 'react';
 import HousePrice from '../Houseprice/HousePrice';
-import HouseDetails from '../HouseDetails/HouseDetails';
 
 const Houses = () => {
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink,Link } from 'react-router-dom';
 import './Header.css'
+import hphoto from '../../assets/Rent-a-house.png'
 
 const Header = () => {
     const list = <>
@@ -38,7 +39,7 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl bg-linear-to-r from-cyan-500 to-blue-500">https://www.easyrenthouse.com</Link>
+                    <Link to='/houses'><img className='h-36 w-36' src={hphoto}alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -46,6 +47,8 @@ const Header = () => {
 
                     </ul>
                 </div>
+                
+                <Link to='/houses' className="btn btn-ghost text-xl bg-linear-to-r from-cyan-500 to-blue-500">https://www.easyrenthouse.com</Link>
                 <div className="navbar-end flex">
                     <Link to='/Login'><a className="btn bg-linear-to-r from-cyan-500 to-blue-100">Login</a></Link>
                     <Link to='/register'><a className="btn bg-linear-to-r from-cyan-500 to-blue-100">Register</a></Link>

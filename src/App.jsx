@@ -9,6 +9,7 @@ import SliderHouse from './Pages/SliderHouse/SliderHouse'
 import HouseDetails from './Pages/HouseDetails/HouseDetails'
 import Register from './Pages/Register/Register'
 import Login from './Pages/Login/Login'
+import Reset from './Pages/Reset/Reset'
 
 function App() {
   const router = createBrowserRouter([
@@ -42,8 +43,9 @@ function App() {
         },
         {
           path:'/reset',
-          element:
-        }
+          element:<Reset></Reset>
+        },
+      
       ]
     }
   ])

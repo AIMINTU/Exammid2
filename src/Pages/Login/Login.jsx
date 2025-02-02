@@ -38,8 +38,15 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
         console.log(email, password)
             .then(result => {
+                if(!result.user.emailVerified){
+                    alert('firstly verify you email.otherwise no service')
+                    setError('age verify koro')
+                    return;
+                }
+                               
                 setSuccess("User login successfully")
                 console.log(result.user)
+        
             })
             .catch(err => {
                 if (err.message == 'Firebase: Error (auth/invalid-Credential).') {
@@ -85,11 +92,11 @@ const Login = () => {
     }
     return (
         <div className='max-w-7xl mx-auto'>
-            this is login page
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <h1 className='text-5xl font-bold'>Login now!</h1>
+                        
                         {
                             user && <div>
                                 <p className="py-6">
@@ -99,14 +106,14 @@ const Login = () => {
                                     Email:{user.email}
                                 </p>
                                 <div>
-                                    <img src={user.photoURL} alt="" />
+                                    <img src={user.photoURL} alt="picture" />
                                 </div>
                             </div>
                         }
 
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form className="card-body" onSubmit={handleSign}>
+                        <form className="card-body w-full" onSubmit={handleSign}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -135,6 +142,7 @@ const Login = () => {
                             </div>
                             <p className='text-green-600'>{success}</p>
                             <p className='text-red-600'>{error}</p>
+                            <button>Verify your email</button>
                         </form>
                         {
                             user ? <button className="btn btn-primary mt-10" onClick={Logout}>LogOut</button> : <div><button className="btn btn-primary mt-10" onClick={loginWithGoogle}>Google Login</button>

@@ -5,6 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import studi from '../../assets/2.png'
 import stud from '../../assets/3.png'
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import { FaFacebook ,FaTwitter,FaLinkedin,FaInstagram, FaSnapchat,FaTelegram,FaWhatsapp,FaPinterest, FaReddit} from "react-icons/fa";
+import sphoto from '../../assets/Rent-a-house.png'
 
 const Housecategory = () => {
     var settings = {
@@ -18,12 +22,12 @@ const Housecategory = () => {
         <div className='Max-w-7xl mx-auto'>
 
             <Link to='/houses'><h1 className='font-bold text-3xl text-center border border-b-blue-600 shadow text-neutral py-3 rounded-xl'>HouseCategory</h1></Link>
-            <div className='grid grid-cols-3 mt-20'>
+            <div className='grid grid-cols-3 mt-0'>
                 <div className='col-span-2 border border-blue-500 p-10 '>
 
                     <h1 className='font-bold text-2xl text-neutral'>Types of Flates :</h1>
                     <hr className='border border-black' />
-                    <div className='grid grid-cols-2 '>
+                    <div className='grid grid-cols-2'>
                         <div>
                             <img className='mt-3 h-[450px]' src={studi} alt="" />
                             <Link to='/houses'><p className='text-bold text-neutral text-2xl text-center border border-blue-400'>Studio Apartment</p></Link>
@@ -44,9 +48,57 @@ const Housecategory = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className='col-span-1 border border-blue-500 p-10'>
-                    This part is for login in the housecategory page
+                    <h1 className='font-bold text-2xl text-neutral'>Google and Github login</h1>
+                    <hr className='border border-black' />
+                    <div>
+                        <button className='btn btn-outline btn-info w-full mt-2'> <FcGoogle className='text-3xl' />Google Login</button>
+                        <button className='btn btn-outline btn-info w-full mt-2'> <FaGithub className='text-3xl' />Github Login</button>
+                    </div>
+                    <div className='mt-10'>
+                        <h1 className='font-bold text-2xl text-neutral'>Social media login page</h1>
+                        <hr className='border border-black' />
+                        <div className='border  border-black mt-3 '>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaFacebook className='text-xl' />Facebook</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'>< FaLinkedin className='text-xl' />Linkedin</h1>
+                            </div>
+
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaTwitter className='text-xl' />Twitter</h1>
+                            </div>
+
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaInstagram className='text-xl'/>Instagram</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaWhatsapp className='text-xl'/>Whatsapp</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaTelegram className='text-xl'/>Telegram</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaSnapchat className='text-xl'/>Snapchat</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaReddit className='text-xl'/>Reddit</h1>
+                            </div>
+                            <div className='border-b border-accent'>
+                                <h1 className='flex p-3 gap-2 items-center text-indigo-500'><FaPinterest className='text-xl'/>Pinterest</h1>
+                            </div>
+
+                        </div>
+                        <Link to='/houses'><h1 className='font-bold text-2xl text-indigo-500 mt-3'>Click here for comfort home</h1></Link>
+                        <hr className='border border-black' />
+                        <Link to='/houses'><img className='w-500' src={sphoto}alt="" /></Link>
+
+                    </div>
+
                 </div>
+
             </div>
             <div className='mt-20'>
                 <Slider {...settings}>
